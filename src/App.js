@@ -2,17 +2,27 @@ import React from 'react';
 import Login from './components/Login';
 import Form from './Form';
 import Increment from './Increment';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Signup from './components/Signup';
 import Navbar from './components/Navbar';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from 'react-router-dom'
+import Dashboard from './components/Dashboard';
 
 function App() {
   return (
-    <div className="App p-4">
-      <Login />
-      <Signup />
-      <Navbar />
-    </div>
+    <>
+      <div className="App">
+        <Routes>
+          <Route path='/' element={<Dashboard />} />
+          <Route path='login' element={<Login />} />
+          <Route path='signup' element={<Signup />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 
