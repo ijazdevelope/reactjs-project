@@ -16,7 +16,7 @@ import Contact from './components/Contact';
 function App() {
   return (
     <>
-      <div className="app h-100 grid place-items-center p-4">
+      <div className="h-100 grid place-items-center p-4">
         <Routes>
           <Route path='/' element={<Dashboard />} />
           <Route path='login' element={<Login />} />
