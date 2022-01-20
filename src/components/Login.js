@@ -14,12 +14,12 @@ const Login = () => {
     return (
         <div className="col-md-6 grid place-content-center vh-100">
             <h3 className="mb-3 text-uppercase text-center">Login Form</h3>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} >
                 <div className='row'>
                     <div className="form-floating mb-3 w-100 ps-0">
-                        <input type="email" defaultValue="test" {...register("exampleRequired", { required: true })} className="form-control" id="floatingInput" placeholder="name@example.com" />
+                        <input type="email" {...register("email", { required: true })} className="form-control" id="floatingInput" placeholder="name@example.com" />
                         <label for="floatingInput">Email address</label>
-                        {errors.exampleRequired && <span className='p-0 text-danger'>Email address is required</span>}
+                        {errors.email && <span className='p-0 text-danger'>Email address is required</span>}
                     </div>
                     <div className="form-floating w-100 ps-0">
                         <input type="password" {...register("password", { required: true })} className="form-control" id="floatingPassword" placeholder="Password" />
