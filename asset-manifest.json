@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/ReactJs-Dashboard/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/ReactJs-Dashboard/static/js/main.f71c06dc.chunk.js",
+    "main.js.map": "/ReactJs-Dashboard/static/js/main.f71c06dc.chunk.js.map",
+    "runtime-main.js": "/ReactJs-Dashboard/static/js/runtime-main.0e16ead2.js",
+    "runtime-main.js.map": "/ReactJs-Dashboard/static/js/runtime-main.0e16ead2.js.map",
+    "static/css/2.48698778.chunk.css": "/ReactJs-Dashboard/static/css/2.48698778.chunk.css",
+    "static/js/2.07b07edc.chunk.js": "/ReactJs-Dashboard/static/js/2.07b07edc.chunk.js",
+    "static/js/2.07b07edc.chunk.js.map": "/ReactJs-Dashboard/static/js/2.07b07edc.chunk.js.map",
+    "static/js/3.1e8a81f6.chunk.js": "/ReactJs-Dashboard/static/js/3.1e8a81f6.chunk.js",
+    "static/js/3.1e8a81f6.chunk.js.map": "/ReactJs-Dashboard/static/js/3.1e8a81f6.chunk.js.map",
+    "index.html": "/ReactJs-Dashboard/index.html",
+    "static/css/2.48698778.chunk.css.map": "/ReactJs-Dashboard/static/css/2.48698778.chunk.css.map",
+    "static/css/main.6dea0f05.chunk.css.map": "/ReactJs-Dashboard/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.07b07edc.chunk.js.LICENSE.txt": "/ReactJs-Dashboard/static/js/2.07b07edc.chunk.js.LICENSE.txt",
+    "static/media/bootstrap-icons.css": "/ReactJs-Dashboard/static/media/bootstrap-icons.38c4d249.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0e16ead2.js",
+    "static/css/2.48698778.chunk.css",
+    "static/js/2.07b07edc.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.f71c06dc.chunk.js"
+  ]
+}
