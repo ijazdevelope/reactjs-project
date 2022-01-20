@@ -18,8 +18,8 @@ function App() {
     <>
       <div className="h-100 grid place-items-center p-4">
         <Routes>
-          <Route path='/' element={<Dashboard />} />
-          <Route path='login' element={<Login />} />
+          <Route path='/' element={<Login />} />
+          <Route path='dashboard' element={<Dashboard />} />
           <Route path='signup' element={<Signup />} />
           <Route path='home' element={<Home />} />
           <Route path='about' element={<About />} />

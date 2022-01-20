@@ -7,7 +7,7 @@ const Dashboard = () => {
             <div>
                 <Navbar />
             </div>
-            <div className='text-center'>
+            <div className='text-center fs-1 text-primary'>
                 My Dashboard
             </div>
         </div>
