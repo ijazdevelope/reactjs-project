@@ -10,7 +10,6 @@ const schema = yup.object({
     lastName: yup.string().required(),
     email: yup.string().required(),
     password: yup.string().required(),
-    age: yup.number().positive().integer().required(),
 }).required();
 
 const Signup = () => {
@@ -19,6 +18,7 @@ const Signup = () => {
         resolver: yupResolver(schema)
     });
     const onSubmit = data => console.log(data,'data');
+    console.log(errors, 'errors');
 
 
     return (
