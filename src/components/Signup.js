@@ -6,19 +6,20 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 
 const schema = yup.object({
-    firstName: yup.string().required(),
-    lastName: yup.string().required(),
-    email: yup.string().required(),
+    firstName: yup.string().required('First Name is required').min(4, 'minimum 4 characters').max(10, 'max length is 10 characters'),
+    lastName: yup.string().required('Last Name is required').min(4, 'minimum 4 characters').max(10, 'max length is 10 characters'),
+    email: yup.string().required('Email is required'),
     password: yup.string().required(),
 }).required();
 
-const Signup = () => {
+const Signup = (props) => {
+    console.log(props,'props');
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     });
     const onSubmit = data => console.log(data,'data');
-    console.log(errors, 'errors');
+    console.log(errors.firstName, 'errors');
 
 
     return (
@@ -27,26 +28,31 @@ const Signup = () => {
                 <div className="row">
                     <h3 className="mb-3 text-uppercase text-center">Signup Form</h3>
                     <div className="form-floating mb-3 col-md-6 ps-0">
-                        <input type="text" {...register("firstName")} className={`form-control position-relative`} id="floatingInput" placeholder="name@example.com" />
+                        <input type="text" {...register("firstName")} className={`form-control position-relative ${errors.firstName && 'border-danger'}`} id="floatingInput" placeholder="name@example.com" />
                         <label for="floatingInput">First Name</label> 
-                        <p className='text-danger'>{errors.firstName?.message}</p>
+                        {errors?.firstName && <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>}
+                        {errors?.firstName?.message && <p className='text-danger'>{errors?.firstName?.message}</p>}
                     </div>
                     <div className="form-floating mb-3 col-md-6 ps-0">
-                        <input type="text" {...register("lastName")} className={`form-control position-relative`} id="floatingPassword" placeholder="Password" />
+                        <input type="text" {...register("lastName")} className={`form-control position-relative ${errors.lastName && 'border-danger'}`} id="floatingPassword" placeholder="Password" />
                         <label for="floatingPassword">Last Name</label>
+                        {errors.lastName && <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>}
                         <p className='text-danger'>{errors.lastName?.message}</p>
                     </div>
                     <div className="form-floating w-100 mb-3 ps-0">
-                        <input type="email" {...register("email")} className={`form-control position-relative`} id="floatingPassword" placeholder="Password" autoComplete="off" />
+                        <input type="email" {...register("email")} className={`form-control position-relative ${errors.email && 'border-danger'}`} id="floatingPassword" placeholder="Password" autoComplete="off" />
                         <label for="floatingPassword">Email</label>
+                        {errors.email && <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i> 
+ }
                         <p className='text-danger'>{errors.email?.message}</p>
                     </div>
                     <div className="form-floating w-100 ps-0">
-                        <input type="password" {...register("password")} className={`form-control position-relative`} id="floatingPassword" placeholder="Password" autoComplete="off" />
+                        <input type="password" {...register("password")} className={`form-control position-relative ${errors.password && 'border-danger'}`} id="floatingPassword" placeholder="Password" autoComplete="off" />
                         <label for="floatingPassword">Password</label>
+                        {errors.password && <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>}
                         <p className='text-danger'>{errors.password?.message}</p>
                     </div>
-                    <button type="submit" className="btn btn-primary mt-3 col-2">Sign Up</button>
+                    <button type="submit" className="btn btn-primary mt-3 col-4 col-md-3">Sign Up</button>
                 </div>
             </form>
         </div>
