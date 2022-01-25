@@ -5,9 +5,10 @@ import * as yup from "yup";
 
 
 const schema = yup.object({
-    email: yup.string().required(),
-    password: yup.string().required(),
-    age: yup.number().positive().integer().required(),
+    email: yup.string().required('Email is required').matches(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, 'Invalid email format'),
+    password: yup.string().required()
+    .min(4, 'Password length should be at least 4 characters')
+    .matches(/^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/ , 'Password must contain at least 8 characters, one uppercase, one number and one special case character'),
 }).required();
 
 const Login = () => {
@@ -26,12 +27,12 @@ const Login = () => {
                     <div className="form-floating mb-3 w-100 ps-0">
                         <input type="email" {...register("email")} className='form-control position-relative' id="floatingInput" placeholder="name@example.com" />
                         <label for="floatingInput">Email address</label>
-                        <p className='text-danger'>{errors.email?.message}</p>
+                        <p className='text-danger'>{errors?.email?.message}</p>
                     </div>
                     <div className="form-floating w-100 ps-0">
                         <input type="password" {...register("password")} className='form-control position-relative' id="floatingPassword" placeholder="Password" />
                         <label for="floatingPassword">Password</label>
-                        <p className='text-danger'>{errors.password?.message}</p>
+                        <p className='text-danger'>{errors?.password?.message}</p>
                     </div>
                     <button type="submit" className="btn btn-primary mt-3 col-2">Login</button>
                 </div>
