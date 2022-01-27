@@ -30,22 +30,11 @@ const schema = Yup.object({
 }).required();
 
 const Signup = (props) => {
-    console.log(props, 'props');
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     });
     const onSubmit = data => console.log(data, 'data');
-    console.log(errors?.firstName, 'errors');
-
-    // password matching start
-    // validationSchema: Yup.object({
-    //     password: Yup.string().required('Password is required'),
-    //     passwordConfirmation: Yup.string()
-    //        .oneOf([Yup.ref('password'), null], 'Passwords must match')
-    //   });
-    // password matching end
-
 
     return (
         <div className="col-md-6 grid place-content-center vh-100">
