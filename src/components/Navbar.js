@@ -14,9 +14,9 @@ const Navbar = () => {
                     <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div className="offcanvas-body">
-                <Link to='home' className='text-decoration-none d-block'>Home</Link>
-                <Link to='about' className='text-decoration-none d-block'>About</Link>
-                <Link to='contact' className='text-decoration-none d-block'>Contact</Link>
+                <Link to='/home' className='text-decoration-none d-block'>Home</Link>
+                <Link to='/about' className='text-decoration-none d-block'>About</Link>
+                <Link to='/contact' className='text-decoration-none d-block'>Contact</Link>
                     <div className="dropdown mt-3">
                         <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
                             Dropdown button

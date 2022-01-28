@@ -1,7 +1,11 @@
-import React from 'react';
+import React from "react";
 
 function Contact() {
-  return <div>Contact</div>;
+  return (
+    <>
+      <h2 className='text-center'>Contact</h2>
+    </>
+  );
 }
 
 export default Contact;
