@@ -80,10 +80,10 @@ scales: {
 },
 };
 
-const config = {
-  type: 'doughnut',
-  data: data,
-};
+// const config = {
+//   type: 'doughnut',
+//   data: data,
+// };
 
 function MyChart() {
   return <div>
