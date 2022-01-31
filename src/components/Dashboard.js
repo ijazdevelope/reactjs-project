@@ -9,7 +9,7 @@ const Dashboard = () => {
         <Navbar />
       </div>
       <div className="text-center fs-1 text-primary w-100 h-50">
-        <h1>Doughnut Chart</h1>
+        {/* <h1>Chart</h1> */}
         <MyChart />
       </div>
     </div>

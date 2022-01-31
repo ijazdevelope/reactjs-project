@@ -1,0 +1,12 @@
+a.nav-link.active, a.active {
+    border: 0.5px dotted gray;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding: 0.3rem;
+}
+.card-container{
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+}
+img.card-img-top{
+    height: 300px;
+}

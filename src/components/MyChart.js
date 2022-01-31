@@ -26,10 +26,12 @@ const data = {
   labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
   datasets: [
     { 
+      label: "# Black Color",
       data: [10, 20, 30, 50, 100, 70],
       backgroundColor: '#333'
     },
     { 
+      label: "# Toggle Effect",
       data: [50, 20, 10, 30, 90, 40],
       backgroundColor: '#00FF00'
     },
@@ -46,7 +48,7 @@ const data = {
       ],
       hoverOffset: 4,
       borderColor: [
-        "rgba(255, 99, 132, 1)",
+        "red",
         "rgba(54, 162, 235, 1)",
         "rgba(255, 206, 86, 1)",
         "rgba(75, 192, 192, 1)",
@@ -86,7 +88,7 @@ scales: {
 // };
 
 function MyChart() {
-  return <div>
+  return <div className='p-3'>
         <Line data={data} options={options} />
   </div>;
 }
