@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
-import MyChart from "./MyChart";
+// import MyChart from "./MyChart";
 
 const Dashboard = () => {
   return (
@@ -8,9 +8,20 @@ const Dashboard = () => {
       <div>
         <Navbar />
       </div>
-      <div className="text-center fs-1 text-primary w-100 h-50">
-        {/* <h1>Chart</h1> */}
-        <MyChart />
+      <div className="text-center text-primary w-100 h-50">
+        <h3 className='mt-2 mb-3'>Employees Table</h3>
+        {/* <MyChart /> */}
+        <table class="table table-striped table-hover">
+            <thead>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Designation</th>
+                <th>City</th>
+                <th>Email</th>
+                <th>Phone No</th>
+            </thead>
+        </table>
       </div>
     </div>
   );
