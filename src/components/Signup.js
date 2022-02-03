@@ -64,6 +64,7 @@ const schema = Yup.object({
 }).required();
 
 const Signup = (props) => {
+    
   const {
     register,
     handleSubmit,
