@@ -64,7 +64,7 @@ const schema = Yup.object({
 }).required();
 
 const Signup = (props) => {
-    
+
   const {
     register,
     handleSubmit,
@@ -186,7 +186,7 @@ const Signup = (props) => {
           >
             <label className="me-4">Gender</label>
             <input
-              class="form-check-input me-3"
+              className="form-check-input me-3"
               type="radio"
               name="radioNoLabel"
               id="male"
@@ -199,7 +199,7 @@ const Signup = (props) => {
               Male
             </label>
             <input
-              class="form-check-input me-3"
+              className="form-check-input me-3"
               type="radio"
               name="radioNoLabel"
               id="female"

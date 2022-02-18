@@ -1,96 +1,95 @@
-import React, { useState } from "react";
-import Navbar from "./Navbar";
-import "./style.css";
-// import MyChart from "./MyChart";
-// import { useForm } from "react-hook-form";
-// import { yupResolver } from "@hookform/resolvers/yup";
-// import * as Yup from "yup";
-import Modal from "./Modal";
-import CustomModal from "./CustomModal";
+import React from "react";
+import CustomModal from "react-modal";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
+import './Modal.css';
 
-// const schema = Yup.object({
-//   firstName: Yup.string()
-//     .required("First Name is required")
-//     .matches(
-//       /^[a-zA-Z]+$/,
-//       "Number and special characters are not allowed here..."
-//     )
-//     .min(4, "minimum 4 characters")
-//     .max(10, "max length is 10 characters"),
-//   lastName: Yup.string()
-//     .required("Last Name is required")
-//     .matches(
-//       /^[a-zA-Z]+$/,
-//       "Number and special characters are not allowed here..."
-//     )
-//     .min(4, "minimum 4 characters")
-//     .max(10, "max length is 10 characters"),
-//   designation: Yup.string()
-//     .required("Designation is required")
-//     .min(4, "minimum 4 characters"),
-//   city: Yup.string()
-//     .required("City name is required")
-//     .matches(
-//       /^[a-zA-Z]+$/,
-//       "Number and special characters are not allowed here..."
-//     )
-//     .min(4, "minimum 4 characters")
-//     .max(10, "max length is 10 characters"),
-//   email: Yup.string()
-//     .required("Email is required")
-//     .email("Invalid email format"),
-//   phone: Yup.string()
-//     .required("Phone number is a required field")
-//     .matches(
-//       /[0-9]/,
-//       "Phone number contain at least 11 characters only number allowed"
-//     )
-//     .min(11, "minimum 11 characters")
-//     .max(11, "max length is 11 numbers"),
-//   gender: Yup.string().required("Please choose your gender"),
-// }).required();
+const schema = Yup.object({
+  firstName: Yup.string()
+    .required("First Name is required")
+    .matches(
+      /^[a-zA-Z]+$/,
+      "Number and special characters are not allowed here..."
+    )
+    .min(4, "minimum 4 characters")
+    .max(10, "max length is 10 characters"),
+  lastName: Yup.string()
+    .required("Last Name is required")
+    .matches(
+      /^[a-zA-Z]+$/,
+      "Number and special characters are not allowed here..."
+    )
+    .min(4, "minimum 4 characters")
+    .max(10, "max length is 10 characters"),
+  designation: Yup.string()
+    .required("Designation is required")
+    .min(4, "minimum 4 characters"),
+  city: Yup.string()
+    .required("City name is required")
+    .matches(
+      /^[a-zA-Z]+$/,
+      "Number and special characters are not allowed here..."
+    )
+    .min(4, "minimum 4 characters")
+    .max(10, "max length is 10 characters"),
+  email: Yup.string()
+    .required("Email is required")
+    .email("Invalid email format"),
+  phone: Yup.string()
+    .required("Phone number is a required field")
+    .matches(
+      /[0-9]/,
+      "Phone number contain at least 11 characters only number allowed"
+    )
+    .min(11, "minimum 11 characters")
+    .max(11, "max length is 11 numbers"),
+  gender: Yup.string().required("Please choose your gender"),
+}).required();
 
-const Dashboard = () => {
-  const [array, setArray] = useState([]);
-  const [modalIsOpen, setIsOpen] = useState(false);
-  console.log(array, 'array');
-  // custom modal start  
-  const [openCustomModal, setOpenCustomModal] = useState(false);
-  // custom modal end  
+function Modal(props) {
+  console.log(props?.inputValue, 'array');
 
-//   const {
-//     register,
-//     handleSubmit,
-//     formState: { errors },
-//   } = useForm({
-//     resolver: yupResolver(schema),
-//   });
-//   const onSubmit = (items) => {
-//     data.push(items);
-//     console.log(data, "data333");
-//   };
-
-  const openModal = () => {
-    setIsOpen(true);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const onSubmit = (items) => {
+    props?.array?.push(items);
+    console.log(props?.array, "data333");
   };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
   return (
-    <div className="w-100">
-      <div>
-        <Navbar />
-      </div>
-      <div className="text-center text-primary w-100 h-50">
-        <h3 className="mt-2 mb-3">Employees Table</h3>
-        {/* <MyChart /> */}
-        {/* Modal Form input fields started */}
-        {/* <div className="grid place-content-center p-3">
+    <>
+      <CustomModal
+        isOpen={props?.isOpen}
+        onRequestClose={props?.closeModal}
+        className="Modal"
+        overlayClassName="Overlay"
+        shouldCloseOnOverlayClick={false}
+      >
+        <button onClick={props?.closeModal} className='position-absolute right-5 top-3' >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+        <div className="grid place-content-center p-3">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="row p-4 p-md-0 text-left">
-              <h3 className="mb-3 text-uppercase text-center">Signup Form</h3>
+              <h3 className="mb-3 text-uppercase text-center text-primary">Employees Details</h3>
               <div className="form-floating mb-3 col-md-6">
                 <input
                   type="text"
@@ -166,7 +165,6 @@ const Dashboard = () => {
                   }`}
                   id="floatingPassword"
                   placeholder="email"
-                  autoComplete="off"
                 />
                 <label for="floatingPassword">Email</label>
                 {errors?.email && (
@@ -226,82 +224,15 @@ const Dashboard = () => {
                 )}
                 <p className="text-danger mb-0">{errors?.gender?.message}</p>
               </div>
-              <button type="submit" className="btn btn-primary col-2 px-1 py-2">
+              <button type="submit" className="btn btn-primary col col-sm-2 col-md-3 px-1 py-2 ms-2">
                 Sign Up
               </button>
             </div>
           </form>
-        </div> */}
-        {/* Modal Form input fields end */}
-        <div className="container-fluid">
-          <button
-            type="submit"
-            className="btn btn-primary mb-3 px-1 py-2 d-block"
-            onClick={openModal}
-          >
-            Add Employees
-          </button>
-          <button
-            type="submit"
-            className="btn btn-primary mb-3 px-1 py-2 d-block"
-            onClick={ () => setOpenCustomModal(true) }
-          >
-            Open Custom Modal
-          </button>
-          {/* set modal start */}
-          <Modal isOpen={modalIsOpen} closeModal={closeModal} array={array} />
-          <CustomModal openCustomModal={openCustomModal}  />
-          {/* set modal end */}
-          <table className="table table-striped table-hover border mb-0">
-            <thead className="bg-light">
-              <th className="p-3">#</th>
-              <th className="p-3">First Name</th>
-              <th className="p-3">Last Name</th>
-              <th className="p-3">Email</th>
-              <th className="p-3">Designation</th>
-              <th className="p-3">City</th>
-              <th className="p-3">Phone No</th>
-              <th className="p-3">Gender</th>
-            </thead>
-            <tbody>
-              {array?.length === 0 ? (
-                <tr>
-                  <td colSpan="8" className="fs-1 py-5">
-                    Employees Not Found!
-                  </td>
-                </tr>
-              ) : (
-                array?.map((employess, index) => {
-                    index++;
-                  const {
-                    firstName,
-                    lastName,
-                    email,
-                    city,
-                    designation,
-                    phone,
-                    gender,
-                  } = employess; // object destructuring
-                  return (
-                    <tr>
-                      <td className="text-capitalize font-bold">{index}</td>
-                      <td className="text-capitalize">{firstName}</td>
-                      <td className="text-capitalize">{lastName}</td>
-                      <td className="text-capitalize">{email}</td>
-                      <td className="text-capitalize">{designation}</td>
-                      <td className="text-capitalize">{city}</td>
-                      <td className="text-capitalize">{phone}</td>
-                      <td className="text-capitalize">{gender}</td>
-                    </tr>
-                  );
-                })
-              )}
-            </tbody>
-          </table>
         </div>
-      </div>
-    </div>
+      </CustomModal>
+    </>
   );
-};
+}
 
-export default Dashboard;
+export default Modal;

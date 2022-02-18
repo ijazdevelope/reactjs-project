@@ -1,0 +1,13 @@
+.Overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+}
+.Modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #D3D3D3;
+    border-radius: 1rem
+  }
