@@ -6,7 +6,7 @@ import "./style.css";
 // import { yupResolver } from "@hookform/resolvers/yup";
 // import * as Yup from "yup";
 import Modal from "./Modal";
-import CustomModal from "./CustomModal";
+import CustomModal from './CustomModal';
 
 // const schema = Yup.object({
 //   firstName: Yup.string()
@@ -52,10 +52,10 @@ import CustomModal from "./CustomModal";
 
 const Dashboard = () => {
   const [array, setArray] = useState([]);
-  const [modalIsOpen, setIsOpen] = useState(false);
   console.log(array, 'array');
   // custom modal start  
   const [openCustomModal, setOpenCustomModal] = useState(false);
+  console.log(openCustomModal, 'openCustomModal in dashboard');
   // custom modal end  
 
 //   const {
@@ -69,14 +69,6 @@ const Dashboard = () => {
 //     data.push(items);
 //     console.log(data, "data333");
 //   };
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
 
   return (
     <div className="w-100">
@@ -237,7 +229,6 @@ const Dashboard = () => {
           <button
             type="submit"
             className="btn btn-primary mb-3 px-1 py-2 d-block"
-            onClick={openModal}
           >
             Add Employees
           </button>
@@ -249,8 +240,7 @@ const Dashboard = () => {
             Open Custom Modal
           </button>
           {/* set modal start */}
-          <Modal isOpen={modalIsOpen} closeModal={closeModal} array={array} />
-          <CustomModal openCustomModal={openCustomModal}  />
+          <Modal openModal={openCustomModal} closeModal={() => setOpenCustomModal(false)} />
           {/* set modal end */}
           <table className="table table-striped table-hover border mb-0">
             <thead className="bg-light">

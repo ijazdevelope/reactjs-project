@@ -1,9 +1,9 @@
 import React from "react";
-import CustomModal from "react-modal";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import './Modal.css';
+import CustomModal from "./CustomModal";
 
 const schema = Yup.object({
   firstName: Yup.string()
@@ -47,8 +47,8 @@ const schema = Yup.object({
   gender: Yup.string().required("Please choose your gender"),
 }).required();
 
-function Modal(props) {
-  console.log(props?.inputValue, 'array');
+function Modal({ openModal, closeModal }) {
+  console.log(openModal, 'openModal in Modal.js');
 
   const {
     register,
@@ -58,19 +58,15 @@ function Modal(props) {
     resolver: yupResolver(schema),
   });
   const onSubmit = (items) => {
-    props?.array?.push(items);
-    console.log(props?.array, "data333");
+    console.log("data333");
   };
   return (
     <>
       <CustomModal
-        isOpen={props?.isOpen}
-        onRequestClose={props?.closeModal}
-        className="Modal"
-        overlayClassName="Overlay"
-        shouldCloseOnOverlayClick={false}
+        openModal={openModal}
+        closeModal={closeModal}
       >
-        <button onClick={props?.closeModal} className='position-absolute right-5 top-3' >
+        {/* <button onClick={closeModal} className='position-absolute right-5 top-3' >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -85,7 +81,7 @@ function Modal(props) {
               d="M6 18L18 6M6 6l12 12"
             />
           </svg>
-        </button>
+        </button> */}
         <div className="grid place-content-center p-3">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="row p-4 p-md-0 text-left">
@@ -94,9 +90,8 @@ function Modal(props) {
                 <input
                   type="text"
                   {...register("firstName")}
-                  className={`form-control position-relative ${
-                    errors?.firstName && "border-danger"
-                  }`}
+                  className={`form-control position-relative ${errors?.firstName && "border-danger"
+                    }`}
                   id="floatingInput"
                   placeholder="name@example.com"
                 />
@@ -112,9 +107,8 @@ function Modal(props) {
                 <input
                   type="text"
                   {...register("lastName")}
-                  className={`form-control position-relative ${
-                    errors?.lastName && "border-danger"
-                  }`}
+                  className={`form-control position-relative ${errors?.lastName && "border-danger"
+                    }`}
                   id="floatingPassword"
                   placeholder="Password"
                 />
@@ -128,9 +122,8 @@ function Modal(props) {
                 <input
                   type="text"
                   {...register("designation")}
-                  className={`form-control position-relative ${
-                    errors?.designation && "border-danger"
-                  }`}
+                  className={`form-control position-relative ${errors?.designation && "border-danger"
+                    }`}
                   id="floatingPassword"
                   placeholder="designation"
                 />
@@ -144,9 +137,8 @@ function Modal(props) {
                 <input
                   type="text"
                   {...register("city")}
-                  className={`form-control position-relative ${
-                    errors?.city && "border-danger"
-                  }`}
+                  className={`form-control position-relative ${errors?.city && "border-danger"
+                    }`}
                   id="floatingPassword"
                   placeholder="city"
                 />
@@ -160,9 +152,8 @@ function Modal(props) {
                 <input
                   type="email"
                   {...register("email")}
-                  className={`form-control position-relative ${
-                    errors?.email && "border-danger"
-                  }`}
+                  className={`form-control position-relative ${errors?.email && "border-danger"
+                    }`}
                   id="floatingPassword"
                   placeholder="email"
                 />
@@ -176,9 +167,8 @@ function Modal(props) {
                 <input
                   type="number"
                   {...register("phone")}
-                  className={`form-control position-relative ${
-                    errors?.phone && "border-danger"
-                  }`}
+                  className={`form-control position-relative ${errors?.phone && "border-danger"
+                    }`}
                   id="floatingPassword"
                   placeholder="phone"
                   autoComplete="off"

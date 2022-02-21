@@ -9,10 +9,15 @@
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 }
 .modalContentWrapper {
-  max-width: 400px;
+  max-width: 600px;
   width: 100%;
   padding: 45px;
   background: #fff;
+  position: relative;
+}
+button.close-btn{
+  right: 1em;
+  top: 1rem;
 }
 @media (max-width: 576px) {
   .modalContentWrapper {
