@@ -6,7 +6,7 @@ const CustomModal = ({ openModal, closeModal, children }) => {
     return <>
         {openModal && (
             <div className='modalWrapper' onClick={closeModal}>
-                <div className='modalContentWrapper'>
+                <div className='modalContentWrapper' onClick={ e => e.stopPropagation() }>
                     {children}
 
                     <button onClick={closeModal} className='position-absolute close-btn' >
