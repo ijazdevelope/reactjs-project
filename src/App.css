@@ -1,0 +1,36 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.errors{
+  width: 100%;
+  margin-top: .25rem;
+  font-size: clamp(1rem, 156px, 1rem);
+  color: #dc3545;
+}
+.increment{
+  text-align: center;
+}
+.increment h2{text-transform: uppercase;}
+
+.increment span{
+    background: gray;
+    color: white;
+    padding: 0 .5rem;
+    border-radius: 8px;
+}
+
+.increment button{
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: gray;
+  border: none;
+  outline: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+.d-block{display: inline-block;}
+.d-none{display: none;}
+.count_greater{display: inline-3block;}

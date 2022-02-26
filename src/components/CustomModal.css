@@ -1,0 +1,31 @@
+.modalWrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 15000;
+  padding: 0 20px;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+}
+.modalContentWrapper {
+  max-width: 600px;
+  width: 100%;
+  padding: 45px;
+  background: #fff;
+  position: relative;
+}
+button.close-btn{
+  right: 1em;
+  top: 1rem;
+}
+@media (max-width: 576px) {
+  .modalContentWrapper {
+    padding: 45px 30px;
+  }
+}
+@media (max-width: 350px) {
+  .modalContentWrapper {
+    padding: 45px 20px;
+  }
+}
