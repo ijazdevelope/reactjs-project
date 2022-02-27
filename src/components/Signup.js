@@ -5,6 +5,7 @@ import "./style.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { TextField } from "./text-field";
 
 const schema = Yup.object({
   firstName: Yup.string()
@@ -58,9 +59,9 @@ const schema = Yup.object({
     )
     .min(11, "minimum 11 characters")
     .max(11, "max length is 11 numbers"),
-    gender: Yup.string()
+  gender: Yup.string()
     .required("Please choose your gender")
-    
+
 }).required();
 
 const Signup = (props) => {
@@ -79,8 +80,8 @@ const Signup = (props) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="row p-4 p-md-0">
           <h3 className="mb-3 text-uppercase text-center">Signup Form</h3>
-          <div className="form-floating mb-3 col-md-6">
-            <input
+          <div className="col-md-6">
+            {/* <input
               type="text"
               {...register("firstName")}
               className={`form-control position-relative ${
@@ -95,94 +96,57 @@ const Signup = (props) => {
             )}
             {errors?.firstName?.message && (
               <p className="text-danger">{errors?.firstName?.message}</p>
-            )}
-          </div>
-          <div className="form-floating mb-3 col-md-6">
-            <input
-              type="text"
-              {...register("lastName")}
-              className={`form-control position-relative ${
-                errors?.lastName && "border-danger"
-              }`}
-              id="floatingPassword"
-              placeholder="Password"
+            )} */}
+            <TextField
+              name='firstName'
+              type='text'
+              placeholder='first name...'
+              label='First Name'
             />
-            <label for="floatingPassword">Last Name</label>
-            {errors?.lastName && (
-              <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>
-            )}
-            <p className="text-danger">{errors?.lastName?.message}</p>
           </div>
-          <div className="form-floating mb-3 col-md-6">
-            <input
-              type="text"
-              {...register("designation")}
-              className={`form-control position-relative ${
-                errors?.designation && "border-danger"
-              }`}
-              id="floatingPassword"
-              placeholder="designation"
+          <div className="col-md-6">
+            <TextField
+              name='lastName'
+              type='text'
+              placeholder='last name'
+              label='Last Name'
             />
-            <label for="floatingPassword">Designation</label>
-            {errors?.designation && (
-              <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>
-            )}
-            <p className="text-danger">{errors?.designation?.message}</p>
           </div>
-          <div className="form-floating mb-3 col-md-6">
-            <input
-              type="text"
-              {...register("city")}
-              className={`form-control position-relative ${
-                errors?.city && "border-danger"
-              }`}
-              id="floatingPassword"
-              placeholder="city"
+          <div className="col-md-6">
+            <TextField
+              name='designation'
+              type='text'
+              placeholder='designation'
+              label='Designation'
             />
-            <label for="floatingPassword">City</label>
-            {errors?.city && (
-              <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>
-            )}
-            <p className="text-danger">{errors?.city?.message}</p>
           </div>
-          <div className="form-floating w-100 mb-3">
-            <input
-              type="email"
-              {...register("email")}
-              className={`form-control position-relative ${
-                errors?.email && "border-danger"
-              }`}
-              id="floatingPassword"
-              placeholder="email"
-              autoComplete="off"
+          <div className="col-md-6">
+            <TextField
+              name='city'
+              type='text'
+              placeholder='city'
+              label='City'
             />
-            <label for="floatingPassword">Email</label>
-            {errors?.email && (
-              <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>
-            )}
-            <p className="text-danger">{errors?.email?.message}</p>
           </div>
-          <div className="form-floating w-100 mb-3">
-            <input
-              type="number"
-              {...register("phone")}
-              className={`form-control position-relative ${
-                errors?.phone && "border-danger"
-              }`}
-              id="floatingPassword"
-              placeholder="phone"
-              autoComplete="off"
+          <div className="w-100">
+            <TextField
+              name='email'
+              type='email'
+              placeholder='email'
+              label='Email'
             />
-            <label for="floatingPassword">Phone No...</label>
-            {errors?.phone && (
-              <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>
-            )}
-            <p className="text-danger">{errors?.phone?.message}</p>
+          </div>
+          <div className="w-100">
+            <TextField
+              name='phone'
+              type='number'
+              placeholder='phone'
+              label='Phone'
+            />
           </div>
           <div
-            className={`gender mb-3 position-relative form-control ${
-              errors?.gender && "border-danger border"
-            }`}
+            className={`gender mb-3 position-relative form-control ${errors?.gender && "border-danger border"
+              }`}
           >
             <label className="me-4">Gender</label>
             <input
@@ -191,9 +155,11 @@ const Signup = (props) => {
               name="radioNoLabel"
               id="male"
               value='male'
-              {...register("gender", { required: {
+              {...register("gender", {
+                required: {
                   value: true,
-              } })}
+                }
+              })}
             />
             <label htmlFor="male" className="me-4">
               Male
@@ -204,9 +170,11 @@ const Signup = (props) => {
               name="radioNoLabel"
               id="female"
               value='female'
-              {...register("gender", { required: {
+              {...register("gender", {
+                required: {
                   value: true,
-              } })}
+                }
+              })}
             />
             <label htmlFor="female">
               Female

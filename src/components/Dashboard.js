@@ -6,7 +6,6 @@ import "./style.css";
 // import { yupResolver } from "@hookform/resolvers/yup";
 // import * as Yup from "yup";
 import Modal from "./Modal";
-import CustomModal from './CustomModal';
 
 // const schema = Yup.object({
 //   firstName: Yup.string()
@@ -58,17 +57,17 @@ const Dashboard = () => {
   console.log(openCustomModal, 'openCustomModal in dashboard');
   // custom modal end  
 
-//   const {
-//     register,
-//     handleSubmit,
-//     formState: { errors },
-//   } = useForm({
-//     resolver: yupResolver(schema),
-//   });
-//   const onSubmit = (items) => {
-//     data.push(items);
-//     console.log(data, "data333");
-//   };
+  //   const {
+  //     register,
+  //     handleSubmit,
+  //     formState: { errors },
+  //   } = useForm({
+  //     resolver: yupResolver(schema),
+  //   });
+  //   const onSubmit = (items) => {
+  //     data.push(items);
+  //     console.log(data, "data333");
+  //   };
 
   return (
     <div className="w-100">
@@ -235,7 +234,7 @@ const Dashboard = () => {
           <button
             type="submit"
             className="btn btn-primary mb-3 px-1 py-2 d-block"
-            onClick={ () => setOpenCustomModal(true) }
+            onClick={() => setOpenCustomModal(true)}
           >
             Open Custom Modal
           </button>
@@ -262,7 +261,7 @@ const Dashboard = () => {
                 </tr>
               ) : (
                 array?.map((employess, index) => {
-                    index++;
+                  index++;
                   const {
                     firstName,
                     lastName,
