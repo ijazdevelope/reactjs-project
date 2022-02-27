@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { TextField } from "./text-field";
+import Buttton from "./button/Buttton";
 
 
 
@@ -45,7 +46,10 @@ const Login = () => {
                             label='Password'
                         />
                     </div>
-                    <button type="submit" className="btn btn-primary mt-3 col-2">Login</button>
+                    <Buttton
+                        text='Login'
+                    />
+                    {/* <button type="submit" className="btn btn-primary mt-3 col-2">Login</button> */}
                 </div>
             </form>
         </div>

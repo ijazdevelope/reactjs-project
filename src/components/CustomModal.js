@@ -6,10 +6,10 @@ const CustomModal = ({ openModal, closeModal, children }) => {
     return <>
         {openModal && (
             <div className='modalWrapper' onClick={closeModal}>
-                <div className='modalContentWrapper' onClick={ e => e.stopPropagation() }>
+                <div className='modalContentWrapper' onClick={e => e.stopPropagation()}>
                     {children}
 
-                    <button onClick={closeModal} className='position-absolute close-btn' >
+                    <button onClick={closeModal} className='position-absolute bg-transparent shadow-none close-btn' >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-6 w-6"

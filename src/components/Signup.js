@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { TextField } from "./text-field";
+import Buttton from "./button/Buttton";
 
 const schema = Yup.object({
   firstName: Yup.string()
@@ -196,12 +197,15 @@ const Signup = (props) => {
                         {errors?.confirmPassword && <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>}
                         <p className='text-danger'>{errors?.confirmPassword?.message}</p>
                     </div> */}
-          <button
+          {/* <button
             type="submit"
             className="btn btn-primary col-2 ms-3 px-1 py-2"
           >
             Sign Up
-          </button>
+          </button> */}
+          <Buttton
+            text='Sign Up'
+          />
         </div>
       </form>
     </div>

@@ -228,12 +228,6 @@ const Dashboard = () => {
           <button
             type="submit"
             className="btn btn-primary mb-3 px-1 py-2 d-block"
-          >
-            Add Employees
-          </button>
-          <button
-            type="submit"
-            className="btn btn-primary mb-3 px-1 py-2 d-block"
             onClick={() => setOpenCustomModal(true)}
           >
             Open Custom Modal

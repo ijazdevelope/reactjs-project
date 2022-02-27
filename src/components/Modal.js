@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import './Modal.css';
 import CustomModal from "./CustomModal";
 import { TextField } from "./text-field";
+import Buttton from "./button/Buttton";
 
 const schema = Yup.object({
   firstName: Yup.string()
@@ -176,9 +177,9 @@ function Modal({ openModal, closeModal }) {
                 )}
                 <p className="text-danger mb-0">{errors?.gender?.message}</p>
               </div>
-              <button type="submit" className="btn btn-primary col col-sm-2 col-md-3 px-1 py-2 ms-2">
-                Sign Up
-              </button>
+              <Buttton
+                text='Sign Up'
+              />
             </div>
           </form>
         </div>
