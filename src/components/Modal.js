@@ -94,7 +94,8 @@ function Modal({ openModal, closeModal }) {
                   type='text'
                   placeholder='type your first name....'
                   label='First Name'
-                  errors={errors}
+                  // errors={errors?.firstName}
+                  errorMsg={errors?.firstName?.message}
                   register={register}
                 />
                 {/* {errors?.firstName && (
@@ -110,7 +111,7 @@ function Modal({ openModal, closeModal }) {
                   type='text'
                   placeholder='type your last name...'
                   label='Last Name'
-                  errors={errors}
+                  errorMsg={errors?.lastName?.message}
                   register={register}
                 />
               </div>
@@ -120,7 +121,7 @@ function Modal({ openModal, closeModal }) {
                   type='text'
                   placeholder='type your designation...'
                   label='Designation'
-                  errors={errors}
+                  errorMsg={errors?.designation?.message}
                   register={register}
                 />
               </div>
@@ -130,7 +131,7 @@ function Modal({ openModal, closeModal }) {
                   type='text'
                   placeholder='your city...'
                   label='City'
-                  errors={errors}
+                  errorMsg={errors?.city?.message}
                   register={register}
                 />
               </div>
@@ -140,7 +141,7 @@ function Modal({ openModal, closeModal }) {
                   type='email'
                   placeholder='type your email...'
                   label='Email'
-                  errors={errors}
+                  errorMsg={errors?.email?.message}
                   register={register}
                 />
               </div>
@@ -150,7 +151,7 @@ function Modal({ openModal, closeModal }) {
                   type='number'
                   placeholder='your phone...'
                   label='Phone'
-                  errors={errors}
+                  errorMsg={errors?.phone?.message}
                   register={register}
                 />
               </div>
