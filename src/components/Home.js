@@ -10,9 +10,9 @@ function Home() {
       </div>
       <div className="w-100 d-flex justify-content-between p-3">
         <h2 className="text-center">Home</h2>
-        <button type="button" className="btn btn-danger">
+        {/* <button type="button" className="btn btn-danger">
           Logout
-        </button>
+        </button> */}
         <LoadingSpinner />
       </div>
     </>
