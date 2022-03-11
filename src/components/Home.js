@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
+import LoadingSpinner from "./spinner-loading/LoadingSpinner";
 
 function Home() {
   return (
@@ -12,6 +13,7 @@ function Home() {
         <button type="button" className="btn btn-danger">
           Logout
         </button>
+        <LoadingSpinner />
       </div>
     </>
   );

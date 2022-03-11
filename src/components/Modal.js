@@ -94,6 +94,8 @@ function Modal({ openModal, closeModal }) {
                   type='text'
                   placeholder='type your first name....'
                   label='First Name'
+                  errors={errors}
+                  register={register}
                 />
                 {/* {errors?.firstName && (
                   <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>
@@ -108,6 +110,8 @@ function Modal({ openModal, closeModal }) {
                   type='text'
                   placeholder='type your last name...'
                   label='Last Name'
+                  errors={errors}
+                  register={register}
                 />
               </div>
               <div className="col-md-6">
@@ -116,6 +120,8 @@ function Modal({ openModal, closeModal }) {
                   type='text'
                   placeholder='type your designation...'
                   label='Designation'
+                  errors={errors}
+                  register={register}
                 />
               </div>
               <div className="col-md-6">
@@ -124,6 +130,8 @@ function Modal({ openModal, closeModal }) {
                   type='text'
                   placeholder='your city...'
                   label='City'
+                  errors={errors}
+                  register={register}
                 />
               </div>
               <div className="w-100">
@@ -132,6 +140,8 @@ function Modal({ openModal, closeModal }) {
                   type='email'
                   placeholder='type your email...'
                   label='Email'
+                  errors={errors}
+                  register={register}
                 />
               </div>
               <div className="w-100">
@@ -140,6 +150,8 @@ function Modal({ openModal, closeModal }) {
                   type='number'
                   placeholder='your phone...'
                   label='Phone'
+                  errors={errors}
+                  register={register}
                 />
               </div>
               <div className="mb-3 position-relative">
