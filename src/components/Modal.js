@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
@@ -6,6 +6,7 @@ import './Modal.css';
 import CustomModal from "./CustomModal";
 import { TextField } from "./text-field";
 import Buttton from "./button/Buttton";
+import axios from "axios";
 
 const schema = Yup.object({
   firstName: Yup.string()
@@ -49,8 +50,8 @@ const schema = Yup.object({
   gender: Yup.string().required("Please choose your gender"),
 }).required();
 
-function Modal({ openModal, closeModal }) {
-  console.log(openModal, 'openModal in Modal.js');
+function Modal({ openModal, closeModal, data }) {
+  console.log(data);
 
   const {
     register,
@@ -59,31 +60,24 @@ function Modal({ openModal, closeModal }) {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmit = (items) => {
-    console.log("data333");
+  const onSubmit = (data) => {
+    data = data;
+    console.log(data, "data333");
   };
+  // useEffect(() => {
+  //   console.log('useEffect')
+  //   const url = 'https://jsonplaceholder.typicode.com/posts';
+
+  //   axios.post(url)
+  //     .then((response) => { console.log(response) })
+  //     .catch((error) => alert(error));
+  // })
   return (
     <>
       <CustomModal
         openModal={openModal}
         closeModal={closeModal}
       >
-        {/* <button onClick={closeModal} className='position-absolute right-5 top-3' >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button> */}
         <div className="grid place-content-center p-3">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="row p-4 p-md-0 text-left">
@@ -98,12 +92,6 @@ function Modal({ openModal, closeModal }) {
                   errorMsg={errors?.firstName?.message}
                   register={register}
                 />
-                {/* {errors?.firstName && (
-                  <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>
-                )}
-                {errors?.firstName?.message && (
-                  <p className="text-danger">{errors?.firstName?.message}</p>
-                )} */}
               </div>
               <div className="col-md-6">
                 <TextField

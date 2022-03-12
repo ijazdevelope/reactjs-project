@@ -2,7 +2,7 @@ import React from 'react';
 import './CustomModal.css';
 
 const CustomModal = ({ openModal, closeModal, children }) => {
-    console.log(closeModal, 'closeModal in customModal.js')
+    // console.log(closeModal, 'closeModal in customModal.js')
     return <>
         {openModal && (
             <div className='modalWrapper' onClick={closeModal}>

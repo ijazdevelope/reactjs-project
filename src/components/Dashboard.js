@@ -68,7 +68,8 @@ const Dashboard = () => {
   //     data.push(items);
   //     console.log(data, "data333");
   //   };
-
+  const [data, setData] = useState([]);
+  console.log(data, 'data in parent')
   return (
     <div className="w-100">
       <div>
@@ -76,154 +77,7 @@ const Dashboard = () => {
       </div>
       <div className="text-center text-primary w-100 h-50">
         <h3 className="mt-2 mb-3">Employees Table</h3>
-        {/* <MyChart /> */}
-        {/* Modal Form input fields started */}
-        {/* <div className="grid place-content-center p-3">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="row p-4 p-md-0 text-left">
-              <h3 className="mb-3 text-uppercase text-center">Signup Form</h3>
-              <div className="form-floating mb-3 col-md-6">
-                <input
-                  type="text"
-                  {...register("firstName")}
-                  className={`form-control position-relative ${
-                    errors?.firstName && "border-danger"
-                  }`}
-                  id="floatingInput"
-                  placeholder="name@example.com"
-                />
-                <label for="floatingInput">First Name</label>
-                {errors?.firstName && (
-                  <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>
-                )}
-                {errors?.firstName?.message && (
-                  <p className="text-danger">{errors?.firstName?.message}</p>
-                )}
-              </div>
-              <div className="form-floating mb-3 col-md-6">
-                <input
-                  type="text"
-                  {...register("lastName")}
-                  className={`form-control position-relative ${
-                    errors?.lastName && "border-danger"
-                  }`}
-                  id="floatingPassword"
-                  placeholder="Password"
-                />
-                <label for="floatingPassword">Last Name</label>
-                {errors?.lastName && (
-                  <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>
-                )}
-                <p className="text-danger">{errors?.lastName?.message}</p>
-              </div>
-              <div className="form-floating mb-3 col-md-6">
-                <input
-                  type="text"
-                  {...register("designation")}
-                  className={`form-control position-relative ${
-                    errors?.designation && "border-danger"
-                  }`}
-                  id="floatingPassword"
-                  placeholder="designation"
-                />
-                <label for="floatingPassword">Designation</label>
-                {errors?.designation && (
-                  <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>
-                )}
-                <p className="text-danger">{errors?.designation?.message}</p>
-              </div>
-              <div className="form-floating mb-3 col-md-6">
-                <input
-                  type="text"
-                  {...register("city")}
-                  className={`form-control position-relative ${
-                    errors?.city && "border-danger"
-                  }`}
-                  id="floatingPassword"
-                  placeholder="city"
-                />
-                <label for="floatingPassword">City</label>
-                {errors?.city && (
-                  <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>
-                )}
-                <p className="text-danger">{errors?.city?.message}</p>
-              </div>
-              <div className="form-floating w-100 mb-3">
-                <input
-                  type="email"
-                  {...register("email")}
-                  className={`form-control position-relative ${
-                    errors?.email && "border-danger"
-                  }`}
-                  id="floatingPassword"
-                  placeholder="email"
-                  autoComplete="off"
-                />
-                <label for="floatingPassword">Email</label>
-                {errors?.email && (
-                  <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>
-                )}
-                <p className="text-danger">{errors?.email?.message}</p>
-              </div>
-              <div className="form-floating w-100 mb-3">
-                <input
-                  type="number"
-                  {...register("phone")}
-                  className={`form-control position-relative ${
-                    errors?.phone && "border-danger"
-                  }`}
-                  id="floatingPassword"
-                  placeholder="phone"
-                  autoComplete="off"
-                />
-                <label for="floatingPassword">Phone No...</label>
-                {errors?.phone && (
-                  <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>
-                )}
-                <p className="text-danger">{errors?.phone?.message}</p>
-              </div>
-              <div className="mb-3 position-relative">
-                <label className="me-4">Gender</label>
-                <input
-                  className="form-check-input me-3"
-                  type="radio"
-                  name="radioNoLabel"
-                  id="male"
-                  value="male"
-                  {...register("gender", {
-                    required: {
-                      value: true,
-                    },
-                  })}
-                />
-                <label htmlFor="male" className="me-4">
-                  Male
-                </label>
-                <input
-                  className="form-check-input me-3"
-                  type="radio"
-                  name="radioNoLabel"
-                  id="female"
-                  value="female"
-                  {...register("gender", {
-                    required: {
-                      value: true,
-                    },
-                  })}
-                />
-                <label htmlFor="female">Female</label>
-                {errors?.gender && (
-                  <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>
-                )}
-                <p className="text-danger mb-0">{errors?.gender?.message}</p>
-              </div>
-              <button type="submit" className="btn btn-primary col-2 px-1 py-2">
-                Sign Up
-              </button>
-            </div>
-          </form>
-        </div> */}
-        {/* Modal Form input fields end */}
+
         <div className="container-fluid">
           <button
             type="submit"
@@ -233,7 +87,7 @@ const Dashboard = () => {
             Open Custom Modal
           </button>
           {/* set modal start */}
-          <Modal openModal={openCustomModal} closeModal={() => setOpenCustomModal(false)} />
+          <Modal data='my data' openModal={openCustomModal} closeModal={() => setOpenCustomModal(false)} />
           {/* set modal end */}
           <table className="table table-striped table-hover border mb-0">
             <thead className="bg-light">
