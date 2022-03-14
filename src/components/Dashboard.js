@@ -6,6 +6,7 @@ import "./style.css";
 // import { yupResolver } from "@hookform/resolvers/yup";
 // import * as Yup from "yup";
 import Modal from "./Modal";
+import { useSelector } from "react-redux";
 
 // const schema = Yup.object({
 //   firstName: Yup.string()
@@ -50,11 +51,13 @@ import Modal from "./Modal";
 // }).required();
 
 const Dashboard = () => {
+  const state = useSelector(state => state);
+  console.log(state);
   const [array, setArray] = useState([]);
-  console.log(array, 'array');
+  // console.log(array, 'array');
   // custom modal start  
   const [openCustomModal, setOpenCustomModal] = useState(false);
-  console.log(openCustomModal, 'openCustomModal in dashboard');
+  // console.log(openCustomModal, 'openCustomModal in dashboard');
   // custom modal end  
 
   //   const {
@@ -69,7 +72,7 @@ const Dashboard = () => {
   //     console.log(data, "data333");
   //   };
   const [data, setData] = useState([]);
-  console.log(data, 'data in parent')
+  // console.log(data, 'data in parent')
   return (
     <div className="w-100">
       <div>

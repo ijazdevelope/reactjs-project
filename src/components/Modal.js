@@ -6,52 +6,13 @@ import './Modal.css';
 import CustomModal from "./CustomModal";
 import { TextField } from "./text-field";
 import Buttton from "./button/Buttton";
-import axios from "axios";
+import { useDispatch } from "react-redux";
+import { employeeListAction } from "../redux/actions/Actions";
 
-const schema = Yup.object({
-  firstName: Yup.string()
-    .required("First Name is required")
-    .matches(
-      /^[a-zA-Z]+$/,
-      "Number and special characters are not allowed here..."
-    )
-    .min(4, "minimum 4 characters")
-    .max(10, "max length is 10 characters"),
-  lastName: Yup.string()
-    .required("Last Name is required")
-    .matches(
-      /^[a-zA-Z]+$/,
-      "Number and special characters are not allowed here..."
-    )
-    .min(4, "minimum 4 characters")
-    .max(10, "max length is 10 characters"),
-  designation: Yup.string()
-    .required("Designation is required")
-    .min(4, "minimum 4 characters"),
-  city: Yup.string()
-    .required("City name is required")
-    .matches(
-      /^[a-zA-Z]+$/,
-      "Number and special characters are not allowed here..."
-    )
-    .min(4, "minimum 4 characters")
-    .max(10, "max length is 10 characters"),
-  email: Yup.string()
-    .required("Email is required")
-    .email("Invalid email format"),
-  phone: Yup.string()
-    .required("Phone number is a required field")
-    .matches(
-      /[0-9]/,
-      "Phone number contain at least 11 characters only number allowed"
-    )
-    .min(11, "minimum 11 characters")
-    .max(11, "max length is 11 numbers"),
-  gender: Yup.string().required("Please choose your gender"),
-}).required();
+const Modal = ({ openModal, closeModal, data }) => {
+  const dispatch = useDispatch();
 
-function Modal({ openModal, closeModal, data }) {
-  console.log(data);
+  // console.log(data);
 
   const {
     register,
@@ -61,8 +22,17 @@ function Modal({ openModal, closeModal, data }) {
     resolver: yupResolver(schema),
   });
   const onSubmit = (data) => {
-    data = data;
-    console.log(data, "data333");
+    let localStorageValue = JSON.parse(localStorage.getItem('employeeDataList'));
+
+    if (localStorageValue?.length > 0) {
+      localStorageValue?.push(data);
+      console.log(localStorageValue, 'localStorageValue');
+      dispatch(employeeListAction(localStorageValue));
+      localStorage.setItem('employeeDataList', JSON.stringify([...localStorageValue]));
+    } else {
+      localStorage.setItem('employeeDataList', JSON.stringify([data]));
+      dispatch(employeeListAction([data]))
+    }
   };
   // useEffect(() => {
   //   console.log('useEffect')
@@ -190,3 +160,45 @@ function Modal({ openModal, closeModal, data }) {
 }
 
 export default Modal;
+
+const schema = Yup.object({
+  firstName: Yup.string()
+    .required("First Name is required")
+    .matches(
+      /^[a-zA-Z]+$/,
+      "Number and special characters are not allowed here..."
+    )
+    .min(4, "minimum 4 characters")
+    .max(10, "max length is 10 characters"),
+  lastName: Yup.string()
+    .required("Last Name is required")
+    .matches(
+      /^[a-zA-Z]+$/,
+      "Number and special characters are not allowed here..."
+    )
+    .min(4, "minimum 4 characters")
+    .max(10, "max length is 10 characters"),
+  designation: Yup.string()
+    .required("Designation is required")
+    .min(4, "minimum 4 characters"),
+  city: Yup.string()
+    .required("City name is required")
+    .matches(
+      /^[a-zA-Z]+$/,
+      "Number and special characters are not allowed here..."
+    )
+    .min(4, "minimum 4 characters")
+    .max(10, "max length is 10 characters"),
+  email: Yup.string()
+    .required("Email is required")
+    .email("Invalid email format"),
+  phone: Yup.string()
+    .required("Phone number is a required field")
+    .matches(
+      /[0-9]/,
+      "Phone number contain at least 11 characters only number allowed"
+    )
+    .min(11, "minimum 11 characters")
+    .max(11, "max length is 11 numbers"),
+  gender: Yup.string().required("Please choose your gender"),
+}).required();
