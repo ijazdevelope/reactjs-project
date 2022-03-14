@@ -51,7 +51,7 @@ import { useSelector } from "react-redux";
 // }).required();
 
 const Dashboard = () => {
-  const state = useSelector(state => state);
+  const state = useSelector(state => state.reducer);
   console.log(state);
   const [array, setArray] = useState([]);
   // console.log(array, 'array');
