@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
@@ -9,19 +9,21 @@ import Buttton from "./button/Buttton";
 import { useDispatch } from "react-redux";
 import { employeeListAction } from "../redux/actions/Actions";
 
-const Modal = ({ openModal, closeModal, data }) => {
+const Modal = ({ openModal, closeModal }) => {
   const dispatch = useDispatch();
-
-  // console.log(data);
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    // defaultValue="test"
   });
+
   const onSubmit = (data) => {
+    reset({data: '0'});
     let localStorageValue = JSON.parse(localStorage.getItem('employeeDataList'));
 
     if (localStorageValue?.length > 0) {
@@ -31,17 +33,11 @@ const Modal = ({ openModal, closeModal, data }) => {
       localStorage.setItem('employeeDataList', JSON.stringify([...localStorageValue]));
     } else {
       localStorage.setItem('employeeDataList', JSON.stringify([data]));
-      dispatch(employeeListAction([data]))
+      dispatch(employeeListAction([data]));
     }
+    closeModal(false);
+    alert('Data Submitted Successfully!');
   };
-  // useEffect(() => {
-  //   console.log('useEffect')
-  //   const url = 'https://jsonplaceholder.typicode.com/posts';
-
-  //   axios.post(url)
-  //     .then((response) => { console.log(response) })
-  //     .catch((error) => alert(error));
-  // })
   return (
     <>
       <CustomModal
@@ -58,7 +54,6 @@ const Modal = ({ openModal, closeModal, data }) => {
                   type='text'
                   placeholder='type your first name....'
                   label='First Name'
-                  // errors={errors?.firstName}
                   errorMsg={errors?.firstName?.message}
                   register={register}
                 />

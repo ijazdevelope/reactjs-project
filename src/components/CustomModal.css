@@ -11,8 +11,8 @@
 .modalContentWrapper {
   max-width: 600px;
   width: 100%;
-  padding: 45px;
-  background: #fff;
+  padding: 1rem;
+  background: #dedddd;
   position: relative;
 }
 button.close-btn{

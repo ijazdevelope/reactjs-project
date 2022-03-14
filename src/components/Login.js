@@ -16,11 +16,10 @@ const schema = yup.object({
 
 const Login = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { handleSubmit, register, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     });
     const onSubmit = data => console.log(data, 'data');
-    // console.log(formState, 'errors');
 
     return (
         <div className="col-md-6 grid place-content-center vh-100">
@@ -33,23 +32,23 @@ const Login = () => {
                             type='email'
                             placeholder='your email...'
                             label='Email'
+                            errorMsg={errors?.email?.message}
+                            register={register}
                         />
                     </div>
                     <div className="w-100 ps-0">
-                        {/* <input type="password" {...register("password")} className='form-control position-relative' id="floatingPassword" placeholder="Password" />
-                        <label for="floatingPassword">Password</label>
-                        <p className='text-danger'>{errors?.password?.message}</p> */}
                         <TextField
                             name='password'
                             type='password'
                             placeholder='type your password...'
                             label='Password'
+                            errorMsg={errors?.password?.message}
+                            register={register}
                         />
                     </div>
                     <Buttton
                         text='Login'
                     />
-                    {/* <button type="submit" className="btn btn-primary mt-3 col-2">Login</button> */}
                 </div>
             </form>
         </div>

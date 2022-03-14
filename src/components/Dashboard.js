@@ -1,78 +1,21 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import "./style.css";
-// import MyChart from "./MyChart";
-// import { useForm } from "react-hook-form";
-// import { yupResolver } from "@hookform/resolvers/yup";
-// import * as Yup from "yup";
 import Modal from "./Modal";
 import { useSelector } from "react-redux";
 
-// const schema = Yup.object({
-//   firstName: Yup.string()
-//     .required("First Name is required")
-//     .matches(
-//       /^[a-zA-Z]+$/,
-//       "Number and special characters are not allowed here..."
-//     )
-//     .min(4, "minimum 4 characters")
-//     .max(10, "max length is 10 characters"),
-//   lastName: Yup.string()
-//     .required("Last Name is required")
-//     .matches(
-//       /^[a-zA-Z]+$/,
-//       "Number and special characters are not allowed here..."
-//     )
-//     .min(4, "minimum 4 characters")
-//     .max(10, "max length is 10 characters"),
-//   designation: Yup.string()
-//     .required("Designation is required")
-//     .min(4, "minimum 4 characters"),
-//   city: Yup.string()
-//     .required("City name is required")
-//     .matches(
-//       /^[a-zA-Z]+$/,
-//       "Number and special characters are not allowed here..."
-//     )
-//     .min(4, "minimum 4 characters")
-//     .max(10, "max length is 10 characters"),
-//   email: Yup.string()
-//     .required("Email is required")
-//     .email("Invalid email format"),
-//   phone: Yup.string()
-//     .required("Phone number is a required field")
-//     .matches(
-//       /[0-9]/,
-//       "Phone number contain at least 11 characters only number allowed"
-//     )
-//     .min(11, "minimum 11 characters")
-//     .max(11, "max length is 11 numbers"),
-//   gender: Yup.string().required("Please choose your gender"),
-// }).required();
 
 const Dashboard = () => {
   const state = useSelector(state => state.reducer);
-  console.log(state);
+  console.log(state?.employeeData, 'global state');
   const [array, setArray] = useState([]);
-  // console.log(array, 'array');
+
   // custom modal start  
   const [openCustomModal, setOpenCustomModal] = useState(false);
-  // console.log(openCustomModal, 'openCustomModal in dashboard');
-  // custom modal end  
+  // custom modal end
 
-  //   const {
-  //     register,
-  //     handleSubmit,
-  //     formState: { errors },
-  //   } = useForm({
-  //     resolver: yupResolver(schema),
-  //   });
-  //   const onSubmit = (items) => {
-  //     data.push(items);
-  //     console.log(data, "data333");
-  //   };
-  const [data, setData] = useState([]);
-  // console.log(data, 'data in parent')
+
+  const {employeeData} = state;
   return (
     <div className="w-100">
       <div>
@@ -90,7 +33,7 @@ const Dashboard = () => {
             Open Custom Modal
           </button>
           {/* set modal start */}
-          <Modal data='my data' openModal={openCustomModal} closeModal={() => setOpenCustomModal(false)} />
+          <Modal openModal={openCustomModal} closeModal={() => setOpenCustomModal(false)} />
           {/* set modal end */}
           <table className="table table-striped table-hover border mb-0">
             <thead className="bg-light">
@@ -104,14 +47,14 @@ const Dashboard = () => {
               <th className="p-3">Gender</th>
             </thead>
             <tbody>
-              {array?.length === 0 ? (
+              {employeeData?.length === 0 ? (
                 <tr>
                   <td colSpan="8" className="fs-1 py-5">
                     Employees Not Found!
                   </td>
                 </tr>
               ) : (
-                array?.map((employess, index) => {
+                employeeData?.map((employess, index) => {
                   index++;
                   const {
                     firstName,

@@ -27,10 +27,10 @@ const schema = Yup.object({
     .max(10, "max length is 10 characters"),
   designation: Yup.string()
     .required("Designation is required")
-    .matches(
-      /^[a-zA-Z]+$/,
-      "Number and special characters are not allowed here..."
-    )
+    // .matches(
+    //   /^[a-zA-Z]+$/,
+    //   "Number and special characters are not allowed here..."
+    // )
     .min(4, "minimum 4 characters")
     .max(10, "max length is 10 characters"),
   city: Yup.string()
@@ -82,27 +82,13 @@ const Signup = (props) => {
         <div className="row p-4 p-md-0">
           <h3 className="mb-3 text-uppercase text-center">Signup Form</h3>
           <div className="col-md-6">
-            {/* <input
-              type="text"
-              {...register("firstName")}
-              className={`form-control position-relative ${
-                errors?.firstName && "border-danger"
-              }`}
-              id="floatingInput"
-              placeholder="name@example.com"
-            />
-            <label for="floatingInput">First Name</label>
-            {errors?.firstName && (
-              <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>
-            )}
-            {errors?.firstName?.message && (
-              <p className="text-danger">{errors?.firstName?.message}</p>
-            )} */}
             <TextField
               name='firstName'
               type='text'
               placeholder='first name...'
               label='First Name'
+              errorMsg={errors?.firstName?.message}
+              register={register}
             />
           </div>
           <div className="col-md-6">
@@ -111,6 +97,8 @@ const Signup = (props) => {
               type='text'
               placeholder='last name'
               label='Last Name'
+              errorMsg={errors?.lastName?.message}
+              register={register}
             />
           </div>
           <div className="col-md-6">
@@ -119,6 +107,8 @@ const Signup = (props) => {
               type='text'
               placeholder='designation'
               label='Designation'
+              errorMsg={errors?.designation?.message}
+              register={register}
             />
           </div>
           <div className="col-md-6">
@@ -127,6 +117,8 @@ const Signup = (props) => {
               type='text'
               placeholder='city'
               label='City'
+              errorMsg={errors?.city?.message}
+              register={register}
             />
           </div>
           <div className="w-100">
@@ -135,6 +127,8 @@ const Signup = (props) => {
               type='email'
               placeholder='email'
               label='Email'
+              errorMsg={errors?.email?.message}
+              register={register}
             />
           </div>
           <div className="w-100">
@@ -143,6 +137,8 @@ const Signup = (props) => {
               type='number'
               placeholder='phone'
               label='Phone'
+              errorMsg={errors?.phone?.message}
+              register={register}
             />
           </div>
           <div
@@ -185,24 +181,6 @@ const Signup = (props) => {
             )}
             <p className="text-danger mb-0">{errors?.gender?.message}</p>
           </div>
-          {/* <div className="form-floating w-100 ps-0">
-                        <input type="text" {...register("password")} className={`form-control position-relative ${errors?.password && 'border-danger'}`} id="floatingPassword" placeholder="Password" autoComplete="off" />
-                        <label for="floatingPassword">Password</label>
-                        {errors?.password && <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>}
-                        <p className='text-danger'>{errors?.password?.message}</p>
-                    </div>
-                    <div className="form-floating w-100 ps-0">
-                        <input type="text" {...register("confirmPassword")} className={`form-control position-relative ${errors?.confirmPassword && 'border-danger'}`} id="floatingPassword" placeholder="Password" autoComplete="off" />
-                        <label for="floatingPassword">Confirm Password</label>
-                        {errors?.confirmPassword && <i className="bi bi-x-lg position-absolute top-4 right-5 text-danger"></i>}
-                        <p className='text-danger'>{errors?.confirmPassword?.message}</p>
-                    </div> */}
-          {/* <button
-            type="submit"
-            className="btn btn-primary col-2 ms-3 px-1 py-2"
-          >
-            Sign Up
-          </button> */}
           <Buttton
             text='Sign Up'
           />
