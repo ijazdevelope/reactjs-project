@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
@@ -9,9 +9,10 @@ import Buttton from "./button/Buttton";
 import { useDispatch } from "react-redux";
 import { employeeListAction } from "../redux/actions/Actions";
 
-const Modal = ({ openModal, closeModal }) => {
+const Modal = ({ openModal, closeModal, rowData }) => {
   const dispatch = useDispatch();
-
+  console.log(rowData, 'my modal')
+  
   const {
     register,
     handleSubmit,
@@ -19,11 +20,16 @@ const Modal = ({ openModal, closeModal }) => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-    // defaultValue="test"
   });
+  
+  useEffect( () => {
+    if(Object.keys(rowData)?.length > 0){
+      reset(rowData);
+    } 
+  }, [rowData, reset])
 
   const onSubmit = (data) => {
-    reset({data: '0'});
+    // reset({});
     let localStorageValue = JSON.parse(localStorage.getItem('employeeDataList'));
 
     if (localStorageValue?.length > 0) {
